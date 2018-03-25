@@ -12,7 +12,10 @@
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li>
-        <a href="#">Shopping Cart <span class="badge">{{shoppingCart.items.length}}</span></a>
+        {{#link-to 'cart'}}
+          Shopping Cart
+          <span class="badge">{{shoppingCart.itemsCount}}</span>
+          {{/link-to}}
       </li>
     </ul>
   </div><!-- /.container-fluid -->

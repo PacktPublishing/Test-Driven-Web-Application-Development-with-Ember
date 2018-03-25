@@ -8,5 +8,11 @@ export default Factory.extend({
   afterCreate(product){
     product.createImage({ url: faker.image.image(250, 250) });
     product.save();
-  }
+  },
+  traits(){
+    return [faker.commerce.productAdjective(), faker.commerce.productAdjective(), faker.commerce.productAdjective(), faker.commerce.productAdjective(), faker.commerce.productAdjective()];
+  },
+  price(){
+    return faker.commerce.price();
+  },
 });

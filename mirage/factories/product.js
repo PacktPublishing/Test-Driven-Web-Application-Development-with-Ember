@@ -1,10 +1,12 @@
-import { Factory, faker } from 'ember-cli-mirage';
+import { Factory, faker, association } from 'ember-cli-mirage';
 
 export default Factory.extend({
   name(){
     return faker.commerce.product();
   },
-  image(){
-    return faker.image.image(250, 250);
+  image: association(),
+  afterCreate(product){
+    product.createImage({ url: faker.image.image(250, 250) });
+    product.save();
   }
 });

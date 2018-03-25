@@ -17,6 +17,7 @@ export default function() {
   this.get('/products');
   this.get('/products/:id');
   this.get('/categories');
+  this.get('/images/:id');
 
   /*
     Shorthand cheatsheet:

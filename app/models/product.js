@@ -1,9 +1,9 @@
 import DS from 'ember-data';
+import Imageable from './imageable';
 import { computed } from '@ember/object';
 
-export default DS.Model.extend({
+export default Imageable.extend({
   name: DS.attr('string'),
-  image: DS.attr('string'),
   price: DS.attr('number'),
   displayPrice: computed('price', function(){
     let price = parseFloat(this.get('price')),

@@ -1,11 +1,13 @@
-import { Factory, faker, trait } from 'ember-cli-mirage';
+import { Factory, faker, trait, association } from 'ember-cli-mirage';
 
 export default Factory.extend({
   name(){
     return faker.commerce.department();
   },
-  image(){
-    return faker.image.image(250, 250);
+  image: association(),
+  afterCreate(category){
+    category.createImage({ url: faker.image.image(250, 250) });
+    category.save();
   },
   withChildren: trait({
     afterCreate(category, server){

@@ -10,6 +10,11 @@
       </button>
       {{#link-to 'index' class="navbar-brand"}}Supercart{{/link-to}}
     </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="#">Shopping Cart <span class="badge">{{shoppingCart.items.length}}</span></a>
+      </li>
+    </ul>
   </div><!-- /.container-fluid -->
 </nav>
 <div class="container-fluid">

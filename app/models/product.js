@@ -6,6 +6,7 @@ export default Imageable.extend({
   name: DS.attr('string'),
   price: DS.attr('price'),
   traits: DS.attr('array'),
+  category: DS.belongsTo('category'),
   displayPrice: computed('price', function(){
     let price = parseFloat(this.get('price')),
     tax = price * 25/100;

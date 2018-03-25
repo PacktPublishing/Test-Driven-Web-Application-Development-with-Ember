@@ -5,14 +5,15 @@ export default Factory.extend({
     return faker.commerce.department();
   },
   image: association(),
-  afterCreate(category){
-    category.createImage({ url: faker.image.image(250, 250) });
-    category.save();
-  },
   withChildren: trait({
     afterCreate(category, server){
       category.children = server.createList('category', 3);
       category.save();
     }
-  })
+  }),
+  afterCreate(category, server){
+    category.createImage({ url: faker.image.image(250, 250) });
+    category.products = server.createList('product', 3);
+    category.save();
+  }
 });

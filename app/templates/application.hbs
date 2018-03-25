@@ -22,16 +22,18 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
+      {{#if categoryFiltered}}
+        <button class="btn btn-link" {{action 'showAllProducts'}}>Show All Products</button>
+      {{/if}}
       <ul class="list-group">
         {{#each rootCategories as |category|}}
-          <li class="list-group-item">
-            {{category.name}}
+          {{#category-item category=category activeCategoryId=categoryId}}
             <ul class="list-group">
               {{#each category.children as |child|}}
-                <li class="list-group-item">{{child.name}}</li>
+                {{category-item category=child activeCategoryId=categoryId}}
               {{/each}}
             </ul>
-          </li>
+          {{/category-item}}
         {{/each}}
       </ul>
     </div>

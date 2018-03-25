@@ -11,4 +11,14 @@ module('Unit | Model | product', function(hooks) {
     let model = run(() => store.createRecord('product', {}));
     assert.ok(model);
   });
+
+  test('it displays price with tax', function(assert){
+    let price = parseFloat(Math.random() * 1000),
+    tax = price * 25/100;
+    let store = this.owner.lookup('service:store');
+    let model = run(() => store.createRecord('product', { price: price }));
+
+    assert.equal(model.get('displayPrice'), price + tax);
+  });
+
 });

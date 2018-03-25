@@ -14,9 +14,8 @@ export default function() {
 
   this.namespace = '/api';
 
-  this.get('/products', (schema) => {
-    return schema.products.all();
-  })
+  this.get('/products');
+  this.get('/products/:id');
 
   /*
     Shorthand cheatsheet:

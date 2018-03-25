@@ -5,10 +5,18 @@
       <tr>
         <td>{{item.product.name}}</td>
         <td>{{item.product.price}}</td>
-        <td>{{item.quantity}}</td>
+        <td>
+          {{value-decrementor value=item.quantity}}
+          <span class="btn btn-link">{{item.quantity}}</span>
+          {{value-incrementor value=item.quantity}}
+        </td>
         <td><button class="btn btn-danger" {{action 'removeFromCart' item}}>Remove</button></td>
       </tr>
     {{/each}}
   </tbody>
 </table>
+{{#if shoppingCart.cart.items}}
+  {{input type="text" value=customerName}}
+  <button class="btn btn-success" {{action 'checkOut'}}>Checkout</button>
+{{/if}}
 {{outlet}}

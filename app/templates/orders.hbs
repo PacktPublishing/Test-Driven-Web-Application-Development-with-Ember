@@ -1,0 +1,21 @@
+<h3>Your Orders</h3>
+{{#each model as |order|}}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>{{order.id}}</th>
+        <th>{{order.name}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each order.items as |item|}}
+        <tr>
+          <td>{{item.name}}</td>
+          <td>{{item.amount}}</td>
+          <td>{{item.quantity}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{/each}}
+{{outlet}}

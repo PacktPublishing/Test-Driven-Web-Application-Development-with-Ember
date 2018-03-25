@@ -6,6 +6,11 @@ export default Controller.extend({
   actions: {
     removeFromCart(item){
       this.get('shoppingCart').remove(item);
+    },
+    checkOut(){
+      if(this.get('shoppingCart').checkOut(this.get('customerName'))){
+        this.transitionToRoute('orders');
+      }
     }
   }
 });

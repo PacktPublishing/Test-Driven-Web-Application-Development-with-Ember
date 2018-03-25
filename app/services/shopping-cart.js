@@ -19,5 +19,13 @@ export default Service.extend({
   },
   remove(item){
     item.destroyRecord();
-  }
+  },
+  checkOut(name){
+    return this.get('store').createRecord('order', { name: name }).save().then((order) => {
+      this.get('cart.items').forEach(item => {
+        this.get('store').createRecord('order-item', { order: order, product: item.get('product'), name: item.get('product.name'), amount: item.get('product.price'), quantity: item.get('quantity') }).save();
+      });
+      return this.get('cart.items').invoke('destroyRecord');
+    });
+  },
 });

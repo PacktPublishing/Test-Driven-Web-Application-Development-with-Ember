@@ -22,6 +22,9 @@ export default function() {
   this.post('/cart-items');
   this.patch('/cart-items/:id');
   this.del('/cart-items/:id');
+  this.get('/orders');
+  this.post('/orders');
+  this.post('/order-items');
 
   /*
     Shorthand cheatsheet:

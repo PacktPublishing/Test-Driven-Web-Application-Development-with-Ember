@@ -14,8 +14,8 @@ export default function() {
 
   this.namespace = '/api';
 
-  this.get('/products');
-  this.get('/products/:id');
+  this.get('/productes');
+  this.get('/productes/:id');
   this.get('/categories');
   this.get('/images/:id');
   this.post('/carts');

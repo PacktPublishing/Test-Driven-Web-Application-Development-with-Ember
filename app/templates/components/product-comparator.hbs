@@ -1,0 +1,25 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        {{#each products as |product|}}
+          <td>{{product.name}}</td>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {{#each products as |product|}}
+          <td>
+            <ul class="list-unstyled">
+              {{#each product.traits as |trait|}}
+                <li>{{trait}}</li>
+              {{/each}}
+            </ul>
+          </td>
+        {{/each}}
+      </tr>
+    </tbody>
+  </table>
+</div>
+{{yield}}

@@ -10,4 +10,13 @@ export default Controller.extend({
     }
     return this.get('model');
   }),
+  init(){
+    this._super(...arguments);
+    this.set('compareList', []);
+  },
+  actions: {
+    addToCompare(product){
+      this.get('compareList').pushObject(product);
+    }
+  }
 });

@@ -13,9 +13,8 @@
     <ul class="nav navbar-nav navbar-right">
       <li>
         {{#link-to 'cart'}}
-          Shopping Cart
-          <span class="badge">{{shoppingCart.itemsCount}}</span>
-          {{/link-to}}
+          Shopping Cart <span class="badge">{{shoppingCart.cart.items.length}}</span>
+        {{/link-to}}
       </li>
     </ul>
   </div><!-- /.container-fluid -->

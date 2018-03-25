@@ -1,14 +1,14 @@
 <h3>Your Shopping Cart</h3>
 <table class="table table-striped">
   <tbody>
-    {{#each-in shoppingCart.items as |id item|}}
+    {{#each shoppingCart.cart.items as |item|}}
       <tr>
-        <td>{{item.item.name}}</td>
-        <td>{{item.item.price}}</td>
+        <td>{{item.product.name}}</td>
+        <td>{{item.product.price}}</td>
         <td>{{item.quantity}}</td>
-        <td><button class="btn btn-danger" {{action 'removeFromCart' item.item}}>Remove</button></td>
+        <td><button class="btn btn-danger" {{action 'removeFromCart' item}}>Remove</button></td>
       </tr>
-    {{/each-in}}
+    {{/each}}
   </tbody>
 </table>
 {{outlet}}

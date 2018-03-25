@@ -1,39 +1,23 @@
-import Service from '@ember/service';
-import { computed } from '@ember/object';
+import Service, { inject as service } from '@ember/service';
 
 export default Service.extend({
-  token: null,
-  itemsCount: computed('token', function(){
-    return Object.keys(this.get('items')).length;
-  }),
+  store: service(),
   init(){
     this._super(...arguments);
-    if(localStorage.getItem('cartItems')){
-      this.set('items', JSON.parse(localStorage.getItem('cartItems')));
-    } else {
-      this.set('items', {});
-    }
+    this.get('store').createRecord('cart').save().then((cart) =>{
+      this.set('cart', cart);
+    });
   },
   add(item){
-    let items = this.get('items'),
-    itemId = item.id;
-
-    if(items[itemId]){
-      items[itemId].quantity += 1;
+    let cartItem = this.get('cart.items').findBy('product.id', item.id);
+    if(cartItem){
+      cartItem.incrementProperty('quantity');
     } else {
-      items[itemId] = { quantity: 1, item: item };
+      cartItem = this.get('store').createRecord('cart-item', { cart: this.get('cart'), product: item, quantity: 1 });
     }
-    this.set('token', Math.random());
-    this.set('items', items);
-    localStorage.setItem('cartItems', JSON.stringify(items));
+    cartItem.save();
   },
   remove(item){
-    let items = this.get('items'),
-    itemId = item.id;
-    delete items[itemId];
-
-    this.set('items', {});
-    this.set('token', Math.random());
-    this.set('items', items);
+    item.destroyRecord();
   }
 });

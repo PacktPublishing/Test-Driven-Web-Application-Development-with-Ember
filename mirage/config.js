@@ -18,6 +18,10 @@ export default function() {
   this.get('/products/:id');
   this.get('/categories');
   this.get('/images/:id');
+  this.post('/carts');
+  this.post('/cart-items');
+  this.patch('/cart-items/:id');
+  this.del('/cart-items/:id');
 
   /*
     Shorthand cheatsheet:

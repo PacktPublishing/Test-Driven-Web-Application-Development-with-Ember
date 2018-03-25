@@ -6,4 +6,5 @@ export default function( server ) {
   */
 
   server.createList('product', 10);
+  server.createList('category', 3, 'withChildren');
 }

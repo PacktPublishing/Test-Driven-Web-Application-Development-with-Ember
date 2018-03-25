@@ -5,6 +5,6 @@ export default Factory.extend({
     return faker.commerce.product();
   },
   image(){
-    return faker.image.image();
+    return faker.image.image(250, 250);
   }
 });
